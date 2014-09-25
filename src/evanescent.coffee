@@ -11,7 +11,7 @@
 		false
 
 	Evanescent = ->
-		# Slider parent element (should be a ul)
+		# Slider parent element
 		@slidesList = false
 
 		# Slides
@@ -44,6 +44,7 @@
 			# Check that the element passed is an unordered list
 			if element[0].tagName.toLowerCase() is 'ul'
 				@slidesList = element
+			# If not, use the child UL
 			else
 				@slidesList = element.find('ul')
 
