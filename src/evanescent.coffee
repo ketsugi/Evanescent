@@ -129,6 +129,9 @@
 					if @options.autoplay
 						@start()
 
+					# Call the complete function if any
+					$.isFunction(@options.complete) && @options.complete(nextSlide, currentSlide)
+
 		return
 
 	# Create the jQuery plugin

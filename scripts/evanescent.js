@@ -105,8 +105,9 @@
             nextDot.addClass(this.options.dots.activeClass).removeClass(this.options.dots.inactiveClass);
           }
           if (this.options.autoplay) {
-            return this.start();
+            this.start();
           }
+          return $.isFunction(this.options.complete) && this.options.complete(nextSlide, currentSlide);
         }
       }
     };
