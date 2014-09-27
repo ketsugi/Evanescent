@@ -27,6 +27,7 @@
       },
       animationSpeed: 1000,
       slideDuration: 8000,
+      pauseOnHover: true,
       complete: false
     };
     this.init = function(element, options) {
@@ -87,7 +88,7 @@
       var currentDot, currentSlide, nextDot, nextSlide,
         _this = this;
       if (this.currentSlideIndex !== index) {
-        if (this.slidesList.is(':hover')) {
+        if (this.options.pauseOnHover && this.slidesList.is(':hover')) {
           return window.setTimeout(function() {
             return _this.next();
           }, this.options.slideDuration);

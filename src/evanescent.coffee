@@ -37,6 +37,7 @@
 			}
 			animationSpeed: 1000
 			slideDuration: 8000
+			pauseOnHover: true
 			complete: false # Callback function when a slide is complete
 		}
 
@@ -102,7 +103,7 @@
 			# Make sure we're moving to a new slide
 			if @currentSlideIndex isnt index
 				# Check for hover
-				if @slidesList.is(':hover')
+				if @options.pauseOnHover and @slidesList.is(':hover')
 					window.setTimeout =>
 						@next()
 					, @options.slideDuration
