@@ -1,45 +1,167 @@
 <html>
 <head>
 	<link rel="stylesheet" href="../css/evanescent.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="../css/index.css" type="text/css" media="screen" charset="utf-8">
 </head>
 <body>
-	<div class="evanescent">
-		<ul>
+	<h1>Evanescent</h1>
+	<div class="evanescent-container">
+		<ul id="evanescent">
 			<li>
-				<a href="https://www.flickr.com/photos/kelehen/3499704837">
-					<img src="slides/1.jpg">
-				</a>
+				<img src="slides/1.JPG">
 			</li>
 			<li>
-				<a href="https://www.flickr.com/photos/kelehen/9563191367">
-					<img src="slides/2.jpg">
-				</a>
+				<img src="slides/2.JPG">
 			</li>
 			<li>
-				<a href="https://www.flickr.com/photos/99865622@N05/9523286734">
-					<img src="slides/3.jpg">
-				</a>
+				<img src="slides/3.JPG">
 			</li>
 			<li>
-				<a href="https://www.flickr.com/photos/jeff_mitton/8908476966">
-					<img src="slides/4.jpg">
-				</a>
+				<img src="slides/4.JPG">
+			</li>
+			<li>
+				<img src="slides/5.JPG">
 			</li>
 		</ul>
-		<div class="dots"></div>
+		<div class="pagination">
+			<span class="dots"></span>
+		</div>
 	</div>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<!-- <ul class="features">
+		<li>
+			<h3>Light-weight</h3>
+			<p>
+				Evanescent is small. At only 3KB it&rsquo;ll hardly add any weight to your project.
+			</p>
+		</li>
+		<li>
+			<h3>Customisable</h3>
+			<p>
+				Use CSS to control your carousel&rsquo;s layout and control the appearance of the (optional) pagination indicators.
+			</p>
+		</li>
+		<li>
+			<h3>Controllable</h3>
+			<p>
+				Using jQuery&rsquo;s <span class="code">data</span> method you can control the progress of your carousel from anywhere else on your page.
+			</p>
+		</li>
+	</ul> -->
+	<h1>A basic demonstration</h1>
+	<ol class="howto">
+		<li>
+			<h2>1. Include jQuery and Evanescent</h2>
+			<div class="code">
+				&lt;script src="//path/to/jquery.min.js"&gt;&lt;/script&gt;<br>
+				&lt;script src="//path/to/evanescent.min.js"&gt;&lt;/script&gt;
+			</div>
+		</li>
+		<li>
+			<h2>2. Set up the carousel HTML</h2>
+			<div class="code">
+				&lt;ul id="evanescent"&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;&lt;img src="slides/1.JPG"&gt;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;&lt;img src="slides/2.JPG"&gt;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;&lt;img src="slides/3.JPG"&gt;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;&lt;img src="slides/4.JPG"&gt;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;&lt;img src="slides/5.JPG"&gt;&lt;/li&gt;<br>
+				&lt;/ul&gt;
+			</div>
+		</li>
+		<li>
+			<h2>3. Include the CSS file</h2>
+			<div class="code">
+				&lt;link rel="stylesheet" href="//path/to/evanescent.css" type="text/css"&gt;
+			</div>
+		</li>
+		<li>
+			<h2>4. Initialise Evanescent</h2>
+			<div class="code">
+				&lt;script type="text/javascript"&gt;<br>
+				&nbsp;&nbsp;$('#evanescent').evanescent();<br>
+				&lt;/script&gt;
+			</div>
+		</li>
+	</ol>
+	<h1>Options</h1>
+	<div class="howto">
+		<div class="code">
+			&lt;script type="text/javascript"&gt;<br>
+			&nbsp;&nbsp;$('#evanescent').evanescent({<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;autoplay: true <span class="comment">Start playing immediately?</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;dots: {<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;show: false <span class="comment">Show pagination dots?</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;element: '.dots' <span class="comment">The selector for the element to contain the pagination dots</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inactiveClass: 'inactive' <span class="comment">The class for an inactive page</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;activeClass: 'active' <span class="comment">The class for the current page</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;animationSpeed: 1000 <span class="comment">Speed of the crossfade, in milliseconds</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;slideDuration: 8000 <span class="comment">The duration of each slide, in milliseconds</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;pauseOnHover: true <span class="comment">Pause when the mouse is hovering over the carousel</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;complete: false <span class="comment">Callback function when a slide is complete</span><br>
+			&nbsp;&nbsp;});<br>
+			&lt;/script&gt;
+		</div>
+	</div>
+	<h1>The data method</h1>
+	<div class="howto">
+		You can use jQuery's <span class="code">data</span> method to control the carousel.
+		<div class="code">
+			&lt;script type="text/javascript"&gt;<br>
+			&nbsp;&nbsp;carousel = $('#evanescent').data('evanescent');<br>
+			<br>
+			&nbsp;&nbsp;<span class="comment">Start the carousel</span><br>
+			&nbsp;&nbsp;carousel.start();<br>
+			<br>
+			&nbsp;&nbsp;<span class="comment">Stop the carousel</span><br>
+			&nbsp;&nbsp;carousel.stop();<br>
+			<br>
+			&nbsp;&nbsp;<span class="comment">Go to the next slide</span><br>
+			&nbsp;&nbsp;carousel.next();<br>
+			<br>
+			&nbsp;&nbsp;<span class="comment">Go to the previous slide</span><br>
+			&nbsp;&nbsp;carousel.prev();<br>
+			<br>
+			&nbsp;&nbsp;<span class="comment">Go to the third slide</span><br>
+			&nbsp;&nbsp;carousel.goTo(3);<br>
+			&lt;/script&gt;
+		</div>
+	</div>
+	<script src="http:////ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="../scripts/evanescent.min.js"></script>
 	<script type="text/javascript">
-		$('.evanescent').evanescent({
+		$('#evanescent').evanescent({
 			autoplay: true,
 			pauseOnHover: false,
+			animationSpeed: 1500,
+			slideDuration: 5000,
 			dots: {
 				show: true,
-				activeClass: 'icon-circle',
-				inactiveClass: 'icon-circle-empty'
+				activeClass: 'active',
+				inactiveClass: 'inactive'
 			}
 		});
+
+		// Let's just keep the carousel at 100% window width, but ensure that the carousel height is always 1/3 of it's width (since that's the ratio of the images I'm using in this example)
+		function resizeCarousel () {
+			$('.evanescent-container').height($('.evanescent-container').width()/3);
+		}
+
+		window.onload = resizeCarousel;
+		window.addEventListener("resize", resizeThrottler, false);
+
+		var resizeTimeout;
+		function resizeThrottler() {
+			// ignore resize events as long as an actualResizeHandler execution is in the queue
+			if ( !resizeTimeout ) {
+				resizeTimeout = setTimeout(function() {
+					resizeTimeout = null;
+					resizeCarousel();
+				 
+					// The actualResizeHandler will execute at a rate of 15fps
+				}, 66);
+			}
+		}
 	</script>
 </body>
 </html>

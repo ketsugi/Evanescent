@@ -6,7 +6,6 @@
 	Originally written for use with SunriseClick.com
 ###
 (($) ->
-	#  If there's no jQuery, Unslider can't work, so kill the operation.
 	if !$
 		false
 
@@ -115,9 +114,6 @@
 					nextSlide = $(@slides[index - 1])
 					@currentSlideIndex = index
 
-					currentSlide.fadeOut @options.animationSpeed
-					nextSlide.fadeIn @options.animationSpeed
-
 					# Set the pagination too!
 					if @options.dots.show
 						currentDot = $(@options.dots.element).find('.' + @options.dots.activeClass)
@@ -130,8 +126,10 @@
 					if @options.autoplay
 						@start()
 
-					# Call the complete function if any
-					$.isFunction(@options.complete) && @options.complete(nextSlide, currentSlide)
+					currentSlide.fadeOut @options.animationSpeed
+					nextSlide.fadeIn @options.animationSpeed, =>
+						# Call the complete function if any
+						$.isFunction(@options.complete) && @options.complete(nextSlide, currentSlide)
 
 		return
 

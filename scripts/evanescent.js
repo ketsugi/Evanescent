@@ -97,8 +97,6 @@
           currentSlide = $(this.slides[this.currentSlideIndex - 1]);
           nextSlide = $(this.slides[index - 1]);
           this.currentSlideIndex = index;
-          currentSlide.fadeOut(this.options.animationSpeed);
-          nextSlide.fadeIn(this.options.animationSpeed);
           if (this.options.dots.show) {
             currentDot = $(this.options.dots.element).find('.' + this.options.dots.activeClass);
             nextDot = $(this.options.dots.element).find('span:nth-child(0n+' + this.currentSlideIndex + ')');
@@ -108,7 +106,10 @@
           if (this.options.autoplay) {
             this.start();
           }
-          return $.isFunction(this.options.complete) && this.options.complete(nextSlide, currentSlide);
+          currentSlide.fadeOut(this.options.animationSpeed);
+          return nextSlide.fadeIn(this.options.animationSpeed, function() {
+            return $.isFunction(_this.options.complete) && _this.options.complete(nextSlide, currentSlide);
+          });
         }
       }
     };
