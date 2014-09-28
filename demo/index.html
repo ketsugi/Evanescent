@@ -1,5 +1,6 @@
 <html>
 <head>
+	<title>Evanescent &mdash; a crossfading carousel plugin for jQuery</title>
 	<link rel="stylesheet" href="../css/evanescent.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="../css/index.css" type="text/css" media="screen" charset="utf-8">
 </head>
@@ -27,7 +28,7 @@
 			<span class="dots"></span>
 		</div>
 	</div>
-	<!-- <ul class="features">
+	<ul class="features">
 		<li>
 			<h3>Light-weight</h3>
 			<p>
@@ -46,86 +47,91 @@
 				Using jQuery&rsquo;s <span class="code">data</span> method you can control the progress of your carousel from anywhere else on your page.
 			</p>
 		</li>
-	</ul> -->
+	</ul>
+	<div class="install"><a href="https://github.com/ketsugi/Evanescent" class="icon-install">Get Evanescent</a></div>
 	<h1>A basic demonstration</h1>
 	<ol class="howto">
 		<li>
 			<h2>1. Include jQuery and Evanescent</h2>
 			<div class="code">
-				&lt;script src="//path/to/jquery.min.js"&gt;&lt;/script&gt;<br>
-				&lt;script src="//path/to/evanescent.min.js"&gt;&lt;/script&gt;
+				&lt;<span class="predefined">script</span> src=<span class="literal">"//path/to/jquery.min.js"</span>&gt;&lt;/<span class="predefined">script</span>&gt;<br>
+				&lt;<span class="predefined">script</span> src=<span class="literal">"//path/to/evanescent.min.js"</span>&gt;&lt;/<span class="predefined">script</span>&gt;
 			</div>
 		</li>
 		<li>
 			<h2>2. Set up the carousel HTML</h2>
 			<div class="code">
-				&lt;ul id="evanescent"&gt;<br>
-				&nbsp;&nbsp;&lt;li&gt;&lt;img src="slides/1.JPG"&gt;&lt;/li&gt;<br>
-				&nbsp;&nbsp;&lt;li&gt;&lt;img src="slides/2.JPG"&gt;&lt;/li&gt;<br>
-				&nbsp;&nbsp;&lt;li&gt;&lt;img src="slides/3.JPG"&gt;&lt;/li&gt;<br>
-				&nbsp;&nbsp;&lt;li&gt;&lt;img src="slides/4.JPG"&gt;&lt;/li&gt;<br>
-				&nbsp;&nbsp;&lt;li&gt;&lt;img src="slides/5.JPG"&gt;&lt;/li&gt;<br>
-				&lt;/ul&gt;
+				&lt;<span class="predefined">ul</span> id=<span class="literal">"evanescent"</span>&gt;<br>
+				&nbsp;&nbsp;&lt;<span class="predefined">li</span>&gt;&lt;<span class="predefined">img</span> src=<span class="literal">"slides/1.JPG"</span>&gt;&lt;/<span class="predefined">li</span>&gt;<br>
+				&nbsp;&nbsp;&lt;<span class="predefined">li</span>&gt;&lt;<span class="predefined">img</span> src=<span class="literal">"slides/2.JPG"</span>&gt;&lt;/<span class="predefined">li</span>&gt;<br>
+				&nbsp;&nbsp;&lt;<span class="predefined">li</span>&gt;&lt;<span class="predefined">img</span> src=<span class="literal">"slides/3.JPG"</span>&gt;&lt;/<span class="predefined">li</span>&gt;<br>
+				&nbsp;&nbsp;&lt;<span class="predefined">li</span>&gt;&lt;<span class="predefined">img</span> src=<span class="literal">"slides/4.JPG"</span>&gt;&lt;/<span class="predefined">li</span>&gt;<br>
+				&nbsp;&nbsp;&lt;<span class="predefined">li</span>&gt;&lt;<span class="predefined">img</span> src=<span class="literal">"slides/5.JPG"</span>&gt;&lt;/<span class="predefined">li</span>&gt;<br>
+				&lt;/<span class="predefined">ul</span>&gt;
 			</div>
 		</li>
 		<li>
 			<h2>3. Include the CSS file</h2>
 			<div class="code">
-				&lt;link rel="stylesheet" href="//path/to/evanescent.css" type="text/css"&gt;
+				&lt;<span class="predefined">link</span> rel=<span class="literal">"stylesheet"</span> href=<span class="literal">"//path/to/evanescent.css"</span> type=<span class="literal">"text/css"</span>&gt;
 			</div>
 		</li>
 		<li>
 			<h2>4. Initialise Evanescent</h2>
 			<div class="code">
-				&lt;script type="text/javascript"&gt;<br>
-				&nbsp;&nbsp;$('#evanescent').evanescent();<br>
-				&lt;/script&gt;
+				&lt;<span class="predefined">script</span> type=<span class="literal">"text/javascript"</span>&gt;<br>
+				&nbsp;&nbsp;<span class="class">$</span>(<span class="literal">'#evanescent'</span>).evanescent();<br>
+				&lt;/<span class="predefined">script</span>&gt;
 			</div>
 		</li>
 	</ol>
 	<h1>Options</h1>
 	<div class="howto">
 		<div class="code">
-			&lt;script type="text/javascript"&gt;<br>
-			&nbsp;&nbsp;$('#evanescent').evanescent({<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;autoplay: true <span class="comment">Start playing immediately?</span><br>
+			<span class="comment">The option values shown here are the defaults used if not specified</span><br>
+			&lt;<span class="predefined">script</span> type=<span class="literal">"text/javascript"</span>&gt;<br>
+			&nbsp;&nbsp;<span class="class">$</span>(<span class="literal">'#evanescent'</span>).evanescent(<span class="predefined">{</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;autoplay: <span class="boolean">true</span> <span class="comment">Start playing immediately?</span><br>
 			&nbsp;&nbsp;&nbsp;&nbsp;dots: {<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;show: false <span class="comment">Show pagination dots?</span><br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;element: '.dots' <span class="comment">The selector for the element to contain the pagination dots</span><br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inactiveClass: 'inactive' <span class="comment">The class for an inactive page</span><br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;activeClass: 'active' <span class="comment">The class for the current page</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;show: <span class="boolean">false</span> <span class="comment">Show pagination dots?</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;element: <span class="literal">'.dots'</span> <span class="comment">The selector for the element to contain the pagination dots</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inactiveClass: <span class="literal">'inactive'</span> <span class="comment">The class for an inactive page</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;activeClass: <span class="literal">'active'</span> <span class="comment">The class for the current page</span><br>
 			&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;animationSpeed: 1000 <span class="comment">Speed of the crossfade, in milliseconds</span><br>
-			&nbsp;&nbsp;&nbsp;&nbsp;slideDuration: 8000 <span class="comment">The duration of each slide, in milliseconds</span><br>
-			&nbsp;&nbsp;&nbsp;&nbsp;pauseOnHover: true <span class="comment">Pause when the mouse is hovering over the carousel</span><br>
-			&nbsp;&nbsp;&nbsp;&nbsp;complete: false <span class="comment">Callback function when a slide is complete</span><br>
-			&nbsp;&nbsp;});<br>
-			&lt;/script&gt;
+			&nbsp;&nbsp;&nbsp;&nbsp;animationSpeed: <span class="literal">1000</span> <span class="comment">Speed of the crossfade, in milliseconds</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;slideDuration: <span class="literal">8000</span> <span class="comment">The duration of each slide, in milliseconds</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;pauseOnHover: <span class="boolean">true</span> <span class="comment">Pause when the mouse is hovering over the carousel</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;complete: <span class="boolean">false</span> <span class="comment">Callback function when a slide is complete</span><br>
+			&nbsp;&nbsp;<span class="predefined">}</span>);<br>
+			&lt;/<span class="predefined">script</span>&gt;
 		</div>
 	</div>
 	<h1>The data method</h1>
 	<div class="howto">
 		You can use jQuery's <span class="code">data</span> method to control the carousel.
 		<div class="code">
-			&lt;script type="text/javascript"&gt;<br>
-			&nbsp;&nbsp;carousel = $('#evanescent').data('evanescent');<br>
+			&lt;<span class="predefined">script</span> type=<span class="literal">"text/javascript"</span>&gt;<br>
+			&nbsp;&nbsp;carousel <span class="class">= $</span>(<span class="literal">'#evanescent'</span>).data(<span class="literal">'evanescent'</span>);<br>
 			<br>
 			&nbsp;&nbsp;<span class="comment">Start the carousel</span><br>
-			&nbsp;&nbsp;carousel.start();<br>
+			&nbsp;&nbsp;<span class="class">carousel</span>.start();<br>
 			<br>
 			&nbsp;&nbsp;<span class="comment">Stop the carousel</span><br>
-			&nbsp;&nbsp;carousel.stop();<br>
+			&nbsp;&nbsp;<span class="class">carousel</span>.stop();<br>
 			<br>
 			&nbsp;&nbsp;<span class="comment">Go to the next slide</span><br>
-			&nbsp;&nbsp;carousel.next();<br>
+			&nbsp;&nbsp;<span class="class">carousel</span>.next();<br>
 			<br>
 			&nbsp;&nbsp;<span class="comment">Go to the previous slide</span><br>
-			&nbsp;&nbsp;carousel.prev();<br>
+			&nbsp;&nbsp;<span class="class">carousel</span>.prev();<br>
 			<br>
 			&nbsp;&nbsp;<span class="comment">Go to the third slide</span><br>
-			&nbsp;&nbsp;carousel.goTo(3);<br>
-			&lt;/script&gt;
+			&nbsp;&nbsp;<span class="class">carousel</span>.goTo(<span class="literal">3</span>);<br>
+			&lt;/<span class="predefined">script</span>&gt;
 		</div>
+	</div>
+	<div class="colophon">
+		<a class="twitter icon-twitter" href="https://twitter.com/ketsugi">@ketsugi</a>
 	</div>
 	<script src="http:////ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="../scripts/evanescent.min.js"></script>
