@@ -91,6 +91,7 @@
 			<span class="comment">The option values shown here are the defaults used if not specified</span><br>
 			&lt;<span class="predefined">script</span> type=<span class="literal">"text/javascript"</span>&gt;<br>
 			&nbsp;&nbsp;<span class="class">$</span>(<span class="literal">'#evanescent'</span>).evanescent(<span class="predefined">{</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;loop: <span class="boolean">true</span>, <span class="comment">Loop the carousel?</span><br>
 			&nbsp;&nbsp;&nbsp;&nbsp;autoplay: <span class="boolean">true</span>, <span class="comment">Start playing immediately?</span><br>
 			&nbsp;&nbsp;&nbsp;&nbsp;dots: {<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;show: <span class="boolean">false</span>, <span class="comment">Show pagination dots?</span><br>
@@ -101,7 +102,8 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;animationSpeed: <span class="literal">1000</span>, <span class="comment">Speed of the crossfade, in milliseconds</span><br>
 			&nbsp;&nbsp;&nbsp;&nbsp;slideDuration: <span class="literal">8000</span>, <span class="comment">The duration of each slide, in milliseconds</span><br>
 			&nbsp;&nbsp;&nbsp;&nbsp;pauseOnHover: <span class="boolean">true</span>, <span class="comment">Pause when the mouse is hovering over the carousel</span><br>
-			&nbsp;&nbsp;&nbsp;&nbsp;complete: <span class="boolean">false</span> <span class="comment">Callback function when a slide is complete</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;slideComplete: <span class="boolean">false</span> <span class="comment">Callback function when a slide is complete</span><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;carouselComplete: <span class="boolean">false</span> <span class="comment">Callback function when the last slide is complete</span><br>
 			&nbsp;&nbsp;<span class="predefined">}</span>);<br>
 			&lt;/<span class="predefined">script</span>&gt;
 		</div>
