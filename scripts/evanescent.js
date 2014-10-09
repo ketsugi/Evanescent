@@ -18,6 +18,7 @@
     this.currentSlideIndex = 0;
     this.totalNumberOfSlides = 0;
     this.options = {
+      loop: true,
       autoplay: true,
       dots: {
         show: false,
@@ -28,7 +29,8 @@
       animationSpeed: 1000,
       slideDuration: 8000,
       pauseOnHover: true,
-      complete: false
+      slideComplete: false,
+      carouselComplete: false
     };
     this.init = function(element, options) {
       var dotsHTML, i, _, _i, _ref;
@@ -75,9 +77,16 @@
       return true;
     };
     this.next = function() {
-      var index;
-      index = this.currentSlideIndex === this.totalNumberOfSlides ? 1 : this.currentSlideIndex + 1;
-      return this.goTo(index);
+      if (this.currentSlideIndex === this.totalNumberOfSlides) {
+        $.isFunction(this.options.carouselComplete) && this.options.carouselComplete();
+        if (this.options.loop) {
+          return this.goTo(1);
+        } else {
+          return this.stop();
+        }
+      } else {
+        return this.goTo(this.currentSlideIndex + 1);
+      }
     };
     this.prev = function() {
       var index;
@@ -108,7 +117,7 @@
           }
           currentSlide.fadeOut(this.options.animationSpeed);
           return nextSlide.fadeIn(this.options.animationSpeed, function() {
-            return $.isFunction(_this.options.complete) && _this.options.complete(nextSlide, currentSlide);
+            return $.isFunction(_this.options.slideComplete) && _this.options.slideComplete(nextSlide, currentSlide);
           });
         }
       }

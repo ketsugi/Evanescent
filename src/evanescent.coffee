@@ -27,6 +27,7 @@
 		
 		# Default options
 		@options = {
+			loop: true
 			autoplay: true # Start playing immediately?
 			dots: {
 				show: false # Show pagination dots?
@@ -37,7 +38,8 @@
 			animationSpeed: 1000
 			slideDuration: 8000
 			pauseOnHover: true
-			complete: false # Callback function when a slide is complete
+			slideComplete: false # Callback function when a slide is complete
+			carouselComplete: false # Callback function whenever the last slide has been shown, before it loops back to the beginning
 		}
 
 		@init = (element, options) ->
@@ -91,8 +93,14 @@
 			true
 
 		@next = ->
-			index = if @currentSlideIndex is @totalNumberOfSlides then 1 else @currentSlideIndex + 1
-			@goTo index
+			if @currentSlideIndex is @totalNumberOfSlides
+				$.isFunction(@options.carouselComplete) && @options.carouselComplete()
+				if @options.loop
+					@goTo 1
+				else
+					@stop()				
+			else
+				@goTo @currentSlideIndex + 1
 
 		@prev = ->
 			index = if @currentSlideIndex is 1 then @totalNumberOfSlides else @currentSlideIndex - 1
@@ -129,7 +137,7 @@
 					currentSlide.fadeOut @options.animationSpeed
 					nextSlide.fadeIn @options.animationSpeed, =>
 						# Call the complete function if any
-						$.isFunction(@options.complete) && @options.complete(nextSlide, currentSlide)
+						$.isFunction(@options.slideComplete) && @options.slideComplete(nextSlide, currentSlide)
 
 		return
 
