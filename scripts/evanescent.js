@@ -37,12 +37,12 @@
       if (element[0].tagName.toLowerCase() === 'ul') {
         this.slidesList = element;
       } else {
-        this.slidesList = element.find('ul');
+        this.slidesList = element.children('ul');
       }
       if (this.slidesList.length === 0) {
         return false;
       }
-      this.slides = this.slidesList.find('li');
+      this.slides = this.slidesList.children('li');
       this.totalNumberOfSlides = this.slides.length;
       this.currentSlideIndex = 1;
       this.options = $.extend(true, this.options, options);

@@ -48,13 +48,13 @@
 				@slidesList = element
 			# If not, use the child UL
 			else
-				@slidesList = element.find('ul')
+				@slidesList = element.children('ul')
 
 			# No valid list is found, so exit
 			if @slidesList.length is 0
 				return false
 
-			@slides = @slidesList.find 'li'
+			@slides = @slidesList.children 'li'
 			@totalNumberOfSlides = @slides.length
 			@currentSlideIndex = 1
 
