@@ -29,6 +29,7 @@
       animationSpeed: 1000,
       slideDuration: 8000,
       pauseOnHover: true,
+      slideStart: false,
       slideComplete: false,
       carouselComplete: false
     };
@@ -115,6 +116,7 @@
           if (this.options.autoplay) {
             this.start();
           }
+          $.isFunction(this.options.slideStart) && this.options.slideStart(nextSlide, currentSlide);
           currentSlide.fadeOut(this.options.animationSpeed);
           return nextSlide.fadeIn(this.options.animationSpeed, function() {
             return $.isFunction(_this.options.slideComplete) && _this.options.slideComplete(nextSlide, currentSlide);

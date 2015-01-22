@@ -38,7 +38,8 @@
 			animationSpeed: 1000
 			slideDuration: 8000
 			pauseOnHover: true
-			slideComplete: false # Callback function when a slide is complete
+			slideStart: false # Callback function when a slide transition starts
+			slideComplete: false # Callback function when a slide transition is complete
 			carouselComplete: false # Callback function whenever the last slide has been shown, before it loops back to the beginning
 		}
 
@@ -134,9 +135,11 @@
 					if @options.autoplay
 						@start()
 
+					# Call the slideStart function if any
+					$.isFunction(@options.slideStart) && @options.slideStart(nextSlide, currentSlide)
 					currentSlide.fadeOut @options.animationSpeed
 					nextSlide.fadeIn @options.animationSpeed, =>
-						# Call the complete function if any
+						# Call the slideComplete function if any
 						$.isFunction(@options.slideComplete) && @options.slideComplete(nextSlide, currentSlide)
 
 		return
