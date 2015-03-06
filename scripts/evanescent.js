@@ -94,11 +94,14 @@
       index = this.currentSlideIndex === 1 ? this.totalNumberOfSlides : this.currentSlideIndex - 1;
       return this.goTo(index);
     };
-    this.goTo = function(index) {
+    this.goTo = function(index, force) {
       var currentDot, currentSlide, nextDot, nextSlide,
         _this = this;
+      if (force === void 0) {
+        force = false;
+      }
       if (this.currentSlideIndex !== index) {
-        if (this.options.pauseOnHover && this.slidesList.is(':hover')) {
+        if (this.options.pauseOnHover && this.slidesList.is(':hover') && !force) {
           return window.setTimeout(function() {
             return _this.next();
           }, this.options.slideDuration);

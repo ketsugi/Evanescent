@@ -107,11 +107,14 @@
 			index = if @currentSlideIndex is 1 then @totalNumberOfSlides else @currentSlideIndex - 1
 			@goTo index
 
-		@goTo = (index) ->
+		@goTo = (index, force) ->
+			if force is undefined
+				force = false
+				
 			# Make sure we're moving to a new slide
 			if @currentSlideIndex isnt index
 				# Check for hover
-				if @options.pauseOnHover and @slidesList.is(':hover')
+				if @options.pauseOnHover and @slidesList.is(':hover') and !force
 					window.setTimeout =>
 						@next()
 					, @options.slideDuration
