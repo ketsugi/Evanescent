@@ -47,7 +47,7 @@
       this.totalNumberOfSlides = this.slides.length;
       this.currentSlideIndex = 1;
       this.options = $.extend(true, this.options, options);
-      if (this.options.dots.show) {
+      if (this.options.dots.show && this.totalNumberOfSlides > 1) {
         dotsHTML = '<span class="' + this.options.dots.activeClass + '"></span>';
         for (i = _i = 2, _ref = this.totalNumberOfSlides; 2 <= _ref ? _i <= _ref : _i >= _ref; i = 2 <= _ref ? ++_i : --_i) {
           dotsHTML += '<span class="' + this.options.dots.inactiveClass + '"></span>';

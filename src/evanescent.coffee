@@ -63,7 +63,7 @@
 			@options = $.extend true, @options, options
 
 			# Create pagination
-			if @options.dots.show
+			if @options.dots.show and @totalNumberOfSlides > 1
 				dotsHTML = '<span class="' + @options.dots.activeClass + '"></span>'
 				for i in [2..@totalNumberOfSlides]
 					dotsHTML += '<span class="' + @options.dots.inactiveClass + '"></span>'
